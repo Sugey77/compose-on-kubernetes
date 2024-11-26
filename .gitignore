@@ -1,0 +1,12 @@
+.idea/*
+!./idea/runConfigurations/
+bin
+pre-loaded-images/
+apiserver.local.config/
+kubeconfig
+default.etcd
+./config/
+.pull-secret
+.vscode
+junit*.xml
+*coverage.txt

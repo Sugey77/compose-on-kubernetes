@@ -1,0 +1,20 @@
+#!/bin/sh -xe
+kubectlx ()
+{
+    kubectl -n e2e "$@"
+}
+
+PODS=$(kubectlx get pods -o jsonpath="{.items[*].metadata.name}")
+
+for p in $PODS; do
+    echo "Retrieving coverage from $p"
+    PS=$(kubectlx exec "$p" -- ps aux)
+    PID=$(echo "$PS" | grep '/[-a-z]*.test' | awk "{print \$1}")
+    kubectlx exec "$p" -- kill -2 $PID
+    while ! kubectlx exec  "$p" -- test -f coverage.txt; do
+        kubectlx exec "$p" -- ps aux
+        sleep 1
+    done
+    mkdir -p "e2e/$p"
+    kubectlx cp $p:/home/compose/coverage.txt "e2e/$p/coverage.txt"
+done
