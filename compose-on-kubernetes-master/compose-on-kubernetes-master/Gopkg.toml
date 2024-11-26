@@ -1,0 +1,118 @@
+# Gopkg.toml example
+#
+# Refer to https://github.com/golang/dep/blob/master/docs/Gopkg.toml.md
+# for detailed Gopkg.toml documentation.
+# https://github.com/golang/dep/blob/master/docs/FAQ.md#how-does-dep-decide-what-version-of-a-dependency-to-use
+# https://github.com/golang/dep/blob/master/docs/FAQ.md#how-do-i-constrain-a-transitive-dependencys-version
+#
+# required = ["github.com/user/thing/cmd/thing"]
+# ignored = ["github.com/user/project/pkgX", "bitbucket.org/user/project/pkgA/pkgY"]
+#
+# [[constraint]]
+#   name = "github.com/user/project"
+#   version = "1.0.0"
+#
+# [[constraint]]
+#   name = "github.com/user/project2"
+#   branch = "dev"
+#   source = "github.com/myfork/project2"
+#
+# [[override]]
+#  name = "github.com/x/y"
+#  version = "2.4.0"
+
+
+[[constraint]]
+  name = "k8s.io/apiextensions-apiserver"
+  version = "kubernetes-1.16.2"
+
+[[constraint]]
+  name = "k8s.io/apimachinery"
+  version = "kubernetes-1.16.2"
+
+[[constraint]]
+  name = "k8s.io/client-go"
+  version = "kubernetes-1.16.2"
+
+[[constraint]]
+  name = "k8s.io/apiserver"
+  version = "kubernetes-1.16.2"
+
+[[constraint]]
+  name = "k8s.io/component-base"
+  version = "kubernetes-1.16.2"
+
+[[constraint]]
+  name = "github.com/mitchellh/go-homedir"
+  branch = "master"
+
+[[constraint]]
+  name = "github.com/onsi/ginkgo"
+  branch = "master"
+
+[[constraint]]
+  name = "github.com/onsi/gomega"
+  branch = "master"
+
+[[constraint]]
+  name = "github.com/stretchr/testify"
+  version = "1.1.4"
+
+[[override]]
+  name = "github.com/Masterminds/semver"
+  version = "v1.3.1"
+
+# Transitive dependencies that cannot use tip version.
+[[override]]
+  name = "github.com/xeipuuv/gojsonschema"
+  revision = "93e72a773fade158921402d6a24c819b48aba29d"
+
+[[override]]
+  name = "github.com/docker/cli"
+  branch = "19.03"
+
+[[override]]
+  name = "github.com/docker/docker"
+  source = "https://github.com/docker/engine"
+  branch = "19.03"
+
+[[override]]
+  name = "github.com/docker/distribution"
+  revision = "0d3efadf0154c2b8a4e7b6621fff9809655cc580"
+
+[[override]]
+  name = "google.golang.org/grpc"
+  version = "v1.23.1"
+
+[[override]]
+  name = "github.com/ugorji/go"
+  revision = "bdcc60b419d136a85cdf2e7cbcac34b3f1cd6e57"
+
+[[override]]
+  name = "github.com/coreos/etcd"
+  revision = "v3.3.15"
+
+[[override]]
+  name = "k8s.io/api"
+  version = "kubernetes-1.16.2"
+
+[[override]]
+  name = "k8s.io/kubernetes"
+  version = "v1.16.2"
+
+[[override]]
+  name = "k8s.io/kube-aggregator"
+  version = "kubernetes-1.16.2"
+
+[[override]]
+  name = "k8s.io/kube-openapi"
+  revision = "0270cf2f1c1d995d34b36019a6f65d58e6e33ad4"
+
+[[override]]
+  name = "github.com/evanphx/json-patch"
+  revision = "5858425f75500d40c52783dce87d085a483ce135"
+
+[prune]
+  non-go = true
+  unused-packages = true
+  go-tests = true
